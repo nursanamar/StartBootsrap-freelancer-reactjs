@@ -195,10 +195,108 @@ function ContactSection() {
     </section>;
 }
 function Footer() {
-	return 
+	return <footer className="text-center">
+        <div className="footer-above">
+            <div className="container">
+                <div className="row">
+                    <div className="footer-col col-md-4">
+                        <h3>Location</h3>
+                        <p>3481 Melrose Place
+                            <br />Beverly Hills, CA 90210</p>
+                    </div>
+                    <div className="footer-col col-md-4">
+                        <h3>Around the Web</h3>
+                        <ul className="list-inline">
+                            <li>
+                                <a href="#" className="btn-social btn-outline"><i className="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" className="btn-social btn-outline"><i className="fa fa-fw fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" className="btn-social btn-outline"><i className="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" className="btn-social btn-outline"><i className="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" className="btn-social btn-outline"><i className="fa fa-fw fa-dribbble"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="footer-col col-md-4">
+                        <h3>About Freelancer</h3>
+                        <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className="footer-below">
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-12">
+                        Copyright &copy; Your Website 2016
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>;
+}
+function ScrollButton() {
+	return  <div className="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a className="btn btn-primary" href="#page-top">
+            <i className="fa fa-chevron-up"></i>
+        </a>
+    </div>;
+}
+function PortofolioModals() {
+	return  <div className="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div className="modal-content">
+            <div className="close-modal" data-dismiss="modal">
+                <div className="lr">
+                    <div className="rl">
+                    </div>
+                </div>
+            </div>
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-8 col-lg-offset-2">
+                        <div className="modal-body">
+                            <h2>Project Title</h2>
+                            <hr className="star-primary" />
+                            <img src="img/portfolio/cabin.png" className="img-responsive img-centered" alt="" />
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul className="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" className="btn btn-default" data-dismiss="modal"><i className="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>;
 }
 function App() {
-	return <div><Navigation /><Header /><PortofolioSection /><AboutSection /><ContactSection /></div>;
+	return <div>
+	<Navigation />
+	<Header />
+	<PortofolioSection />
+	<AboutSection />
+	<ContactSection />
+	<Footer />
+	</div>;
 }
 ReactDOM.render(
 	<App />,
