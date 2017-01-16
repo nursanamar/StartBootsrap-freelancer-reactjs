@@ -8,7 +8,7 @@ function Navigation() {
                 <a className="navbar-brand" href="#page-top">Start Bootstrap</a>
             </div>
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul classNameName="nav navbar-nav navbar-right">
+                <ul className="nav navbar-nav navbar-right">
                     <li className="hidden">
                         <a href="#page-top"></a>
                     </li>
@@ -42,7 +42,23 @@ function Header() {
         </div>
     </header>;
 }
-function PortofolioSection() {
+function PortofolioItem(props) {
+	return <div className="col-sm-4 portfolio-item">
+			<a href={"#"+props.id} className="portfolio-link" data-toggle="modal">
+					<div className="caption">
+							<div className="caption-content">
+									<i className="fa fa-search-plus fa-3x"></i>
+							</div>
+					</div>
+					<img src={props.picture} className="img-responsive" alt="" />
+			</a>
+	</div>
+}
+function PortofolioSection(props) {
+	var item=[];
+	props.data.forEach((data) => {
+		item.push(<PortofolioItem id={data.id} picture={props.img} />);
+	});
 	return <section id="portfolio">
         <div className="container">
             <div className="row">
@@ -52,66 +68,7 @@ function PortofolioSection() {
                 </div>
             </div>
             <div className="row">
-                <div className="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal1" className="portfolio-link" data-toggle="modal">
-                        <div className="caption">
-                            <div className="caption-content">
-                                <i className="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/cabin.png" className="img-responsive" alt="" />
-                    </a>
-                </div>
-                <div className="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal2" className="portfolio-link" data-toggle="modal">
-                        <div className="caption">
-                            <div className="caption-content">
-                                <i className="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/cake.png" className="img-responsive" alt="" />
-                    </a>
-                </div>
-                <div className="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal3" className="portfolio-link" data-toggle="modal">
-                        <div className="caption">
-                            <div className="caption-content">
-                                <i className="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/circus.png" className="img-responsive" alt="" />
-                    </a>
-                </div>
-                <div className="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal4" className="portfolio-link" data-toggle="modal">
-                        <div className="caption">
-                            <div className="caption-content">
-                                <i className="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/game.png" className="img-responsive" alt="" />
-                    </a>
-                </div>
-                <div className="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal5" className="portfolio-link" data-toggle="modal">
-                        <div className="caption">
-                            <div className="caption-content">
-                                <i className="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/safe.png" className="img-responsive" alt="" />
-                    </a>
-                </div>
-                <div className="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal6" className="portfolio-link" data-toggle="modal">
-                        <div className="caption">
-                            <div className="caption-content">
-                                <i className="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/submarine.png" className="img-responsive" alt="" />
-                    </a>
-                </div>
+							{item}
             </div>
         </div>
     </section>;
@@ -249,8 +206,8 @@ function ScrollButton() {
         </a>
     </div>;
 }
-function PortofolioModals() {
-	return  <div className="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+function PortofolioModals(props) {
+	return  <div className="portfolio-modal modal fade" id={props.id} tabindex="-1" role="dialog" aria-hidden="true">
         <div className="modal-content">
             <div className="close-modal" data-dismiss="modal">
                 <div className="lr">
@@ -262,10 +219,10 @@ function PortofolioModals() {
                 <div className="row">
                     <div className="col-lg-8 col-lg-offset-2">
                         <div className="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>{props.judul}</h2>
                             <hr className="star-primary" />
-                            <img src="img/portfolio/cabin.png" className="img-responsive img-centered" alt="" />
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <img src={props.picture} className="img-responsive img-centered" alt="" />
+                            <p>{props.desc}</p>
                             <ul className="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
@@ -288,17 +245,27 @@ function PortofolioModals() {
         </div>
     </div>;
 }
-function App() {
+function App(props) {
+	var modal=[];
+	props.portofolio.forEach((data) => {
+		modal.push(<PortofolioModals id={data.id} judul={data.judul} picture={data.img} desc={data.description} />);
+	})
 	return <div>
 	<Navigation />
 	<Header />
-	<PortofolioSection />
+	<PortofolioSection data={props.portofolio} />
 	<AboutSection />
 	<ContactSection />
 	<Footer />
+	{modal}
 	</div>;
 }
+var data =[{
+	"id":"PortofolioModal1","judul":"Project Title",
+"img":"img/portfolio/cabin.png",
+"description":"Use this area of the page to describe your project. The icon above is part of a free icon set by <a href='https://sellfy.com/p/8Q9P/jV3VZ/'>Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!"
+}]
 ReactDOM.render(
-	<App />,
+	<App portofolio={data} />,
 	document.getElementById('page-top')
 );
