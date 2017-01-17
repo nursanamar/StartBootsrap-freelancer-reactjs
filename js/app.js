@@ -1,7 +1,7 @@
 function Navigation() {
 	return <nav id="mainNav" className="navbar navbar-default navbar-fixed-top navbar-custom">
         <div className="container">
-            <div classNameName="navbar-header page-scroll">
+            <div className="navbar-header page-scroll">
                 <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span className="sr-only">Toggle navigation</span> Menu <i className="fa fa-bars"></i>
                 </button>
@@ -56,8 +56,8 @@ function PortofolioItem(props) {
 }
 function PortofolioSection(props) {
 	var item=[];
-	props.data.forEach((data) => {
-		item.push(<PortofolioItem id={data.id} picture={props.img} />);
+	props.data.forEach((data,index) => {
+		item.push(<PortofolioItem id={data.id} picture={data.img} key={index} />);
 	});
 	return <section id="portfolio">
         <div className="container">
@@ -109,7 +109,7 @@ function ContactSection() {
             </div>
             <div className="row">
                 <div className="col-lg-8 col-lg-offset-2">
-                    <form name="sentMessage" id="contactForm" novalidate>
+                    <form name="sentMessage" id="contactForm" noValidate>
                         <div className="row control-group">
                             <div className="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Name</label>
@@ -207,7 +207,7 @@ function ScrollButton() {
     </div>;
 }
 function PortofolioModals(props) {
-	return  <div className="portfolio-modal modal fade" id={props.id} tabindex="-1" role="dialog" aria-hidden="true">
+	return  <div className="portfolio-modal modal fade" id={props.id} tabIndex="-1" role="dialog" aria-hidden="true">
         <div className="modal-content">
             <div className="close-modal" data-dismiss="modal">
                 <div className="lr">
@@ -247,9 +247,10 @@ function PortofolioModals(props) {
 }
 function App(props) {
 	var modal=[];
-	props.portofolio.forEach((data) => {
-		modal.push(<PortofolioModals id={data.id} judul={data.judul} picture={data.img} desc={data.description} />);
-	})
+	props.portofolio.forEach((data,index) => {
+		modal.push(<PortofolioModals id={data.id} judul={data.judul} picture={data.img} desc={data.description} key={index}/>);
+	});
+
 	return <div>
 	<Navigation />
 	<Header />
@@ -263,6 +264,26 @@ function App(props) {
 var data =[{
 	"id":"PortofolioModal1","judul":"Project Title",
 "img":"img/portfolio/cabin.png",
+"description":"Use this area of the page to describe your project. The icon above is part of a free icon set by <a href='https://sellfy.com/p/8Q9P/jV3VZ/'>Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!"
+},{
+	"id":"PortofolioModal2","judul":"Project Title",
+"img":"img/portfolio/cake.png",
+"description":"Use this area of the page to describe your project. The icon above is part of a free icon set by <a href='https://sellfy.com/p/8Q9P/jV3VZ/'>Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!"
+},{
+	"id":"PortofolioModal3","judul":"Project Title",
+"img":"img/portfolio/circus.png",
+"description":"Use this area of the page to describe your project. The icon above is part of a free icon set by <a href='https://sellfy.com/p/8Q9P/jV3VZ/'>Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!"
+},{
+	"id":"PortofolioModal4","judul":"Project Title",
+"img":"img/portfolio/game.png",
+"description":"Use this area of the page to describe your project. The icon above is part of a free icon set by <a href='https://sellfy.com/p/8Q9P/jV3VZ/'>Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!"
+},{
+	"id":"PortofolioModal5","judul":"Project Title",
+"img":"img/portfolio/safe.png",
+"description":"Use this area of the page to describe your project. The icon above is part of a free icon set by <a href='https://sellfy.com/p/8Q9P/jV3VZ/'>Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!"
+},{
+	"id":"PortofolioModal6","judul":"Project Title",
+"img":"img/portfolio/submarine.png",
 "description":"Use this area of the page to describe your project. The icon above is part of a free icon set by <a href='https://sellfy.com/p/8Q9P/jV3VZ/'>Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!"
 }]
 ReactDOM.render(
